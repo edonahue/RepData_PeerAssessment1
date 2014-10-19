@@ -1,0 +1,17 @@
+{
+    "contents" : "\n\nlibrary(ggplot2)\n#Create weekend variable to store day type\n as.factor(act_imp$weekend <- ifelse(weekdays(as.Date(act_imp$date)) %in%c(\"Saturday\", \"Sunday\"),\n        \"Weekend\", \"Weekday\"))\nweekday_intervals <- aggregate(act_imp$steps, by=list(act_imp$weekend, act_imp$interval), FUN= mean, na.rm=TRUE)\nnames(weekday_intervals) <- c(\"weekend\",\"interval\", \"avg_steps\")\nwdy <- ggplot(data=weekday_intervals, aes(x=interval, y=avg_steps)) + geom_line() +geom_point()\nwdy + facet_grid(. ~ weekend)\n\n\n",
+    "created" : 1413740053099.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "166223112",
+    "id" : "6090A877",
+    "lastKnownWriteTime" : 7816032528588891508,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled3"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

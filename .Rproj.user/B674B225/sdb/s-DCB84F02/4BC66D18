@@ -1,0 +1,17 @@
+{
+    "contents" : "# Download and read activity csv\n# download.file(\"https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip\", \"activity.zip\", method=\"curl\")\n# unzip(\"activity.zip\")\n# act <- read.csv(\"activity.csv\")\n\n#Create subset of steps summed for each day, aggregate function used to sum over dates\n# day_steps <- aggregate(act$steps, by=list(act$date), FUN= sum)\n# names(day_steps) <- c(\"date\", \"total_steps\")\n# hist(day_steps$total_steps, xlab=\"Daily Steps\", main = \"Histogram of Steps per Day\", col=\"blue\")\n\n#Mean and median total steps per day\n# mean(day_steps$total_steps, na.rm=TRUE)\n# median(day_steps$total_steps, na.rm=TRUE)\n\n#Create subset of steps averaged for each interval, aggregate function used \n#to average steps over intervals\n# interval_steps <- aggregate(act$steps, by=list(act$interval), FUN= mean, na.rm=TRUE)\n# names(interval_steps) <- c(\"interval\", \"avg_steps\")\n# plot(interval_steps$interval, interval_steps$avg_steps, type=\"l\", col = \"blue\", \n#      main = \"Average Steps Over Daily Five Minute Intervals\", xlab=\"Average Steps\", ylab=\"Five Min Interval\")\n\n# Determine which interval has the maximum average number of steps\n# interval_steps[interval_steps$avg_steps == max(interval_steps$avg_steps, na.rm=TRUE),] \n\n",
+    "created" : 1413735592665.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1851053316",
+    "id" : "4BC66D18",
+    "lastKnownWriteTime" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "#Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)\n# sum(is.na(act$steps))\n# length(act$steps)\n\n# Devise a strategy for filling in all of the missing values in the dataset. \n# The strategy does not need to be sophisticated. For example, \n# you could use the mean/median for that day, \n# or the mean for that 5-minute interval, etc.\n\n#Fill in missing values using average five minute interval\nact_imp <- merge(act, interval_steps, sort=FALSE)\nact_imp <- act_imp[order(act_imp$date, act_imp$interval, na.last=FALSE),]\nact_imp$imp_steps <- as.integer(with(act_imp,ifelse(is.na(steps),avg_steps,steps)))\n\nimp_day_steps <- aggregate(act_imp$imp_steps, by=list(act_imp$date), FUN= sum)\nnames(imp_day_steps) <- c(\"date\", \"total_steps\")\nhist(imp_day_steps$total_steps, xlab=\"Daily Steps\", main = \"Histogram of Steps per Day (Imputed)\", col=\"red\")\n\n#Mean and median total steps per day\nas.integer(mean(imp_day_steps$total_steps, na.rm=TRUE))\nmedian(imp_day_steps$total_steps, na.rm=TRUE)\n\n\n",
+    "created" : 1413736687564.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "768608855",
+    "id" : "3F6D5156",
+    "lastKnownWriteTime" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
